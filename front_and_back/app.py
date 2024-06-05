@@ -12,7 +12,7 @@ app.config['UPLOAD_FOLDER'] = os.path.join(app.static_folder, 'uploads')
 # Ensure the upload folder exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cpu")
 
 # Загрузка кастомной модели
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "quanted_model_traced_quantized_cpu.pth")
