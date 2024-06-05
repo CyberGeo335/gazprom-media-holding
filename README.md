@@ -7,4 +7,12 @@
 ## Навигация по репозиторию
 * ml - папка с jupyter notebook, обработкой данных, тренировкой и валидацией моделей/модели
 * front_and_back - папка, которая содержит файлы для web-сервиса, который написан на Flask
-  * s
+  * static
+   * images
+   * uploads
+  * templates
+   * index.html
+  * app.py
+  * classes.py
+  * model.pth  
+     
