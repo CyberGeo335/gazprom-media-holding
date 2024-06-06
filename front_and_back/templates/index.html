@@ -44,7 +44,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 250px;
+            margin-top: 320px; /* Adjusted the margin to move it 15px lower */
         }
         .image-box {
             background-color: rgba(0, 0, 0, 0.5);
@@ -110,6 +110,9 @@
             <input type="file" name="file"><br>
             <input type="submit" value="Upload">
         </form>
+        <form method="post" action="{{ url_for('clear_history') }}">
+            <input type="submit" value="Clear History">
+        </form>
     </div>
     {% if uploaded_files %}
     <div class="images-grid">
@@ -121,17 +124,6 @@
         {% endfor %}
     </div>
     {% endif %}
-    <div class="history" style="margin-top: 500px;">
-        <h2>Upload History</h2>
-        <ul>
-            {% for file, predicted_class in uploaded_files %}
-            <li>{{ file }} - Класс: {{ predicted_class }}</li>
-            {% endfor %}
-        </ul>
-        <form method="post" action="{{ url_for('clear_history') }}">
-            <input type="submit" value="Clear History">
-        </form>
-    </div>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul>
