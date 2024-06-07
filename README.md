@@ -14,10 +14,9 @@
 
 ### локальный запуск: 
 * `git clone https://github.com/CyberGeo335/gazprom-media-holding.git`
-* `cd НАПИСАТЬ`
+* перехоим по `cd .\gazprom-media-holding\front_and_back\`
 * docker-compose build
 * docker-compose up
-* перехоим по `НАПИСАТЬ`
 
 ## Дополнительный функционал:
 * Был сделан deploy на сервере selectel: `http://45.89.189.247:5000/`, активен до 18.06.2024
