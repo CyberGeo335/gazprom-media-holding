@@ -3,18 +3,17 @@ import os
 from PIL import Image
 import torch
 from torchvision import transforms
-from classes import classes  # Импорт классов
+from classes import classes
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = 'gazprom'
 app.config['UPLOAD_FOLDER'] = os.path.join(app.static_folder, 'uploads')
 
-# Ensure the upload folder exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 DEVICE = torch.device("cpu")
 
-# Загрузка кастомной модели
+
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "quanted_model_traced_quantized_cpu.pth")
 traced_model = torch.jit.load(MODEL_PATH).to(DEVICE)
 
@@ -27,7 +26,7 @@ def preprocess_image(image_path):
     ])
     image = Image.open(image_path)
     image = preprocess(image)
-    image = image.unsqueeze(0)  # Добавляем batch dimension
+    image = image.unsqueeze(0)
     return image
 
 def predict_image(image_path):
@@ -36,7 +35,7 @@ def predict_image(image_path):
     with torch.no_grad():
         output = traced_model(image)
         _, predicted = torch.max(output, 1)
-    predicted_class = classes[predicted.item()]  # Получение класса по индексу
+    predicted_class = classes[predicted.item()]
     return predicted_class
 
 uploaded_files = []
